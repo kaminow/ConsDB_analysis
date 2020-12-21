@@ -16,14 +16,8 @@ vcf_dir=./vcfs/
 vt_vcf_dir=./vt_vcfs/
 # Location for the full personal genomes
 pers_vcf_dir=./pers_full_vcfs/
-# Location for STAR genome directories
-gen_dir=./genomes/
-# Location for reads to map
-reads_dir=./reads/
 # Location for mapping results
 map_dir=./mapping/
-# Location for all other scripts
-scripts_dir=./scripts/
 
 # Location for masked reference FASTA file
 h38_fa=${gen_dir}/h38/ref.maskPAR.fa
@@ -32,6 +26,13 @@ h38_fa_mask=${gen_dir}/h38/ref.maskPAR.fa
 # Location for GTF file
 h38_gtf=${gen_dir}/h38/genes.gtf
 ################################################################################
+
+# Location for STAR genome directories
+gen_dir=./genomes/
+# Location for reads to map
+reads_dir=./reads/
+# Location for all other scripts
+scripts_dir=./scripts/
 
 # All individuals used in this analysis
 individuals=HG00512 HG00513 HG00731 HG00732 HG00733 NA19238 NA19239 NA19240
