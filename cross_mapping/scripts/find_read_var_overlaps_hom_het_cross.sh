@@ -14,7 +14,7 @@ all_pops=$(sed 's/ /\n/g' <<< ${pop[@]} | sort | uniq)
 all_gens=(${all_sups[@]} ${all_pops[@]})
 
 for i in $(seq 0 $((${#ind[@]} - 1))); do
-    ov_gens='homoz'
+    ov_gens='pers'
     for g in ${all_gens[@]}; do
         [[ $g != ${sup[$i]} && $g != ${pop[$i]} ]] && ov_gens="$ov_gens $g"
     done

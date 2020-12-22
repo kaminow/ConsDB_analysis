@@ -1,9 +1,9 @@
 #!/bin/bash
 
-comp_script=$1
+metrics_script=$1
 out_dir=$2
-awk_script=$3
-frag_dir=$4
+in_pref=$3
+out_pref=$4
 id_tab=$5
 
 ind=($(cut -d, -f 1 $id_tab))
@@ -15,13 +15,12 @@ all_pops=$(sed 's/ /\n/g' <<< ${pop[@]} | sort | uniq)
 all_gens=(${all_sups[@]} ${all_pops[@]})
 
 for i in $(seq 0 $((${#ind[@]} - 1))); do
-    comp_gens='pers'
+    met_gens=''
     for g in ${all_gens[@]}; do
-        [[ $g != ${sup[$i]} && $g != ${pop[$i]} ]] && comp_gens="$comp_gens $g"
+        [[ $g != ${sup[$i]} && $g != ${pop[$i]} ]] && met_gens="$met_gens $g"
     done
 
-    out=${out_dir}/${ind[$i]}/
-    mkdir -p $out
-    ${comp_script} ${out} ${awk_script} ${frag_dir} $comp_gens && \
+    mkdir -p ${out_dir}/${ind[$i]}/
+    ${metrics_script} ${out_dir}/${ind[$i]}/ $in_pref $out_pref $met_gens && \
     echo ${ind[$i]}
 done
